@@ -1,0 +1,21 @@
+{
+  "name": "carlog",
+  "description": "CarLog is a webapp for managing vehicles, including fuel use, mileage, and maintenance records and reminders.",
+  "version": "0.0.0",
+  "private": true,
+  "main": "server.coffee",
+  "scripts": {
+    "server": "node bootstrap server"
+  },
+  "dependencies": {
+    "async": "0.9.x",
+    "body-parser": "1.10.x",
+    "coffee-script": "1.8.x",
+    "express": "^4.11.0",
+    "jade": "1.8.x",
+    "mongoose": "3.8.x",
+    "passport": "^0.2.1",
+    "passport-http": "^0.2.2",
+    "passport-local": "^1.0.0"
+  }
+}
