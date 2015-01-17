@@ -2,6 +2,10 @@
 
 express = require 'express'
 
+authentication = require './controllers/authentication'
+
+apiAuthentication = authentication.authenticate 'basic', session: false
+
 testApi = do (test = require './controllers/test') ->
 	router = express.Router()
 
@@ -20,6 +24,18 @@ testApi = do (test = require './controllers/test') ->
 
 	router
 
+userApi = do (user = require './controllers/user') ->
+	router = express.Router()
+
+	router.route('/user')
+		.get(apiAuthentication, user.current)
+		.post(user.create)
+
+	router.route('/user/password')
+		.put(apiAuthentication, user.updatePassword)
+
+	router
+
 is404 = (err) ->
 	# we treat errors as 404 under certain circumstances
 	/\bnot found\b|\bCast to ObjectId failed\b/.test err?.message
@@ -31,6 +47,7 @@ module.exports = (app) ->
 	api = express.Router()
 
 	api.use testApi
+	api.use userApi
 
 	api.use (err, req, res, next) ->
 		return next() if is404 err

@@ -24,6 +24,7 @@ mongoose.connection.on 'disconnected', connect
 app = express()
 
 (require './config/express') app
+(require './config/passport') app
 (require './app/routes') app
 
 server = app.listen process.env.PORT or 3000, () ->
