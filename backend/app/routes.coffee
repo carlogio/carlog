@@ -42,7 +42,7 @@ is404 = (err) ->
 
 module.exports = (app) ->
 	app.get '/', (req, res) ->
-		res.send 'Hello World!'
+		res.render 'index', title: 'Home'
 
 	api = express.Router()
 

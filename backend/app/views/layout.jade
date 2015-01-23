@@ -1,0 +1,16 @@
+doctype
+html
+	head
+		title #{title} - CarLog
+		link(rel='stylesheet', href='/style/style.css')
+		script(type='text/javascript' src='/thirdparty/jquery/dist/jquery.min.js')
+	body
+		header
+			h1 CarLog
+		.container
+			.main-content
+				block content
+			.sidebar
+				block sidebar
+		footer
+			p Running on node with Express, Jade and Stylus
